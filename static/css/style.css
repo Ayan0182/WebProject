@@ -1,4 +1,5 @@
 :root {
+    /* Light mode variables */
     --primary-color: #4361ee;
     --secondary-color: #3f37c9;
     --accent-color: #4895ef;
@@ -9,10 +10,37 @@
     --gray-color: #6c757d;
     --border-radius: 8px;
     --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --bg-color: #f5f7fa; /* Light mode background */
+    --text-color: #212529; /* Light mode text */
+    --card-bg: #ffffff; /* Light mode card background */
+    --header-bg: #ffffff; /* Light mode header */
+    --input-bg: #ffffff; /* Light mode input background */
+    --input-border: #ddd; /* Light mode input border */
+    --table-bg: #ffffff; /* Light mode table background */
+    --table-border: #ddd; /* Light mode table border */
+    --chart-bg: #ffffff; /* Light mode chart background */
 }
 
-.header-content h1{
-    color: #8267d4;
+.dark-mode {
+    /* Dark mode variables */
+    --primary-color: #6b8cff; /* Lighter primary color for contrast */
+    --secondary-color: #5a54e0; /* Adjusted for dark mode */
+    --accent-color: #6ca7ff; /* Adjusted for dark mode */
+    --danger-color: #ff4d9e; /* Slightly lighter for contrast */
+    --success-color: #6cdbff; /* Adjusted for dark mode */
+    --light-color: #333333; /* Dark mode "light" color */
+    --dark-color: #e0e0e0; /* Dark mode text */
+    --gray-color: #a0a0a0; /* Dark mode gray */
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Stronger shadow for dark mode */
+    --bg-color: #1a1a1a; /* Dark mode background */
+    --text-color: #e0e0e0; /* Dark mode text */
+    --card-bg: #2c2c2c; /* Dark mode card background */
+    --header-bg: #121212; /* Dark mode header */
+    --input-bg: #333333; /* Dark mode input background */
+    --input-border: #555555; /* Dark mode input border */
+    --table-bg: #2c2c2c; /* Dark mode table background */
+    --table-border: #444444; /* Dark mode table border */
+    --chart-bg: #2c2c2c; /* Dark mode chart background */
 }
 
 * {
@@ -23,9 +51,10 @@
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f5f7fa;
-    color: var(--dark-color);
+    background-color: var(--bg-color);
+    color: var(--text-color);
     line-height: 1.6;
+    transition: all 0.3s ease; /* Smooth theme transition */
 }
 
 .container {
@@ -33,6 +62,55 @@ body {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px 0;
+    background-color: var(--bg-color);
+}
+
+/* Header Styles */
+header {
+    background-color: var(--header-bg);
+    box-shadow: var(--box-shadow);
+    padding: 1rem 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-content h1 {
+    color: var(--primary-color); /* Adjusted for better contrast in dark mode */
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logout-btn {
+    color: var(--danger-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.logout-btn:hover {
+    text-decoration: underline;
+}
+
+.theme-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.theme-btn:hover {
+    background-color: var(--secondary-color);
 }
 
 /* Auth Styles */
@@ -41,11 +119,11 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
 }
 
 .auth-card {
-    background: white;
+    background: var(--card-bg);
     padding: 2rem;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -76,16 +154,19 @@ body {
     display: block;
     margin-bottom: 0.5rem;
     font-weight: 500;
+    color: var(--text-color);
 }
 
 .form-group input,
 .form-group select {
     width: 100%;
     padding: 0.75rem;
-    border: 1px solid #ddd;
+    border: 1px solid var(--input-border);
     border-radius: var(--border-radius);
     font-family: inherit;
     font-size: 1rem;
+    background-color: var(--input-bg);
+    color: var(--text-color);
 }
 
 .form-group input:focus,
@@ -127,34 +208,6 @@ body {
 }
 
 /* Dashboard Styles */
-header {
-    background-color: white;
-    box-shadow: var(--box-shadow);
-    padding: 1rem 0;
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.logout-btn {
-    color: var(--danger-color);
-    text-decoration: none;
-    font-weight: 500;
-}
-
-.logout-btn:hover {
-    text-decoration: underline;
-}
-
 .dashboard-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -185,7 +238,7 @@ header {
 }
 
 .summary-card {
-    background: white;
+    background: var(--card-bg);
     padding: 1.5rem;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -212,10 +265,11 @@ header {
 
 .chart-container {
     height: 300px;
+    background-color: var(--chart-bg);
 }
 
 .add-expense-section {
-    background: white;
+    background: var(--card-bg);
     padding: 1.5rem;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -229,7 +283,7 @@ header {
 }
 
 .expenses-section {
-    background: white;
+    background: var(--card-bg);
     padding: 1.5rem;
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
@@ -244,21 +298,23 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 1rem;
+    background-color: var(--table-bg);
 }
 
 th, td {
     padding: 0.75rem;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--table-border);
+    color: var(--text-color);
 }
 
 th {
-    background-color: #f8f9fa;
+    background-color: var(--light-color);
     font-weight: 600;
 }
 
 tr:hover {
-    background-color: #f8f9fa;
+    background-color: var(--light-color);
 }
 
 .category-badge {
@@ -267,11 +323,11 @@ tr:hover {
     border-radius: 20px;
     font-size: 0.75rem;
     font-weight: 500;
-    background-color: #e9ecef;
+    background-color: var(--light-color);
     color: var(--dark-color);
 }
 
-/* Category colors */
+/* Category colors (adjusted for dark mode readability) */
 .category-Home {
     background-color: #ffec99;
     color: #5f3dc4;
@@ -303,78 +359,8 @@ tr:hover {
 }
 
 .category-Other {
-    background-color: #e9ecef;
-    color: #495057;
-}
-
-
-
-/* Edit/Delete Buttons */
-.edit-btn, .delete-btn {
-    padding: 0.25rem 0.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    margin: 0 0.1rem;
-}
-
-.edit-btn {
-    background-color: #a5d8ff;
-    color: #1864ab;
-}
-
-.delete-btn {
-    background-color: #ffc9c9;
-    color: #c92a2a;
-}
-
-.edit-btn:hover, .delete-btn:hover {
-    opacity: 0.8;
-}
-
-/* Filter Section */
-#filter-btn {
-    height: fit-content;
-    align-self: flex-end;
-}
-
-/* Responsive Tables */
-@media (max-width: 768px) {
-    .expenses-table-container {
-        overflow-x: auto;
-        display: block;
-        white-space: nowrap;
-    }
-}
-
-/* Chart Containers */
-.chart-container {
-    height: 300px;
-    margin-bottom: 1rem;
-}
-
-/* Add this to your existing CSS */
-td[data-currency="inr"]::before {
-    content: "₹";
-    margin-right: 2px;
-}
-
-
-
-
-
-/* Edit Mode Styling */
-[data-edit-mode="true"] {
-    border: 2px solid #4361ee;
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    background-color: #f0f7ff;
-    transition: all 0.3s ease;
-}
-
-[data-edit-mode="true"] h2 {
-    color: #4361ee;
+    background-color: var(--light-color);
+    color: var(--dark-color);
 }
 
 /* Edit/Delete Buttons */
@@ -403,9 +389,10 @@ td[data-currency="inr"]::before {
     transform: translateY(-1px);
 }
 
-/* Form Transition Effects */
-.add-expense-section {
-    transition: all 0.3s ease;
+/* Filter Section */
+#filter-btn {
+    height: fit-content;
+    align-self: flex-end;
 }
 
 /* Responsive Tables */
@@ -424,7 +411,69 @@ td[data-currency="inr"]::before {
 }
 
 /* Indian Rupee Symbol Styling */
+td[data-currency="inr"]::before,
 .rupee-symbol::before {
     content: "₹";
     margin-right: 2px;
+}
+
+/* Edit Mode Styling */
+[data-edit-mode="true"] {
+    border: 2px solid var(--primary-color);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    background-color: var(--card-bg);
+    transition: all 0.3s ease;
+}
+
+[data-edit-mode="true"] h2 {
+    color: var(--primary-color);
+}
+
+/* Form Transition Effects */
+.add-expense-section {
+    transition: all 0.3s ease;
+}
+.budget-section {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+.budget-table-container {
+    margin-top: 1.5rem;
+}
+.progress-bar {
+    background-color: var(--light-color);
+    border-radius: 10px;
+    height: 10px;
+    overflow: hidden;
+}
+.progress-bar-fill {
+    height: 100%;
+    transition: width 0.3s ease;
+}
+.progress-bar-fill.safe {
+    background-color: var(--success-color);
+}
+.progress-bar-fill.warning {
+    background-color: #ffc107;
+}
+.progress-bar-fill.danger {
+    background-color: var(--danger-color);
+}
+.alert-message {
+    display: none;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border-radius: var(--border-radius);
+    color: white;
+    font-weight: 500;
+}
+.alert-message.warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+.alert-message.danger {
+    background-color: var(--danger-color);
 }
