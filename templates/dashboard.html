@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block content %}
+<header>
+    <div class="container">
+        <div class="header-content">
+            <h1>Expense Tracker</h1>
+            <div class="user-info">
+                <span>Welcome, {{ username }}</span>
+                <a href="/logout" class="logout-btn">Logout</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <div class="dashboard-grid">
+        <!-- Summary Section -->
+        <section class="summary-section">
+            <h2>Monthly Summary</h2>
+            <div class="summary-cards">
+                <div class="summary-card total">
+                    <h3>Total Spent</h3>
+                    <p id="total-amount">₹0</p>
+                </div>
+                <div class="summary-card chart-container">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+                <div class="summary-card chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add/Edit Expense Section -->
+        <section class="add-expense-section" id="expense-form-section">
+            <h2 id="form-title">Add New Expense</h2>
+            <form id="expense-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="amount">Amount (₹)</label>
+                        <input type="number" id="amount" step="0.01" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="category" required>
+                            <option value="">Select Category</option>
+                            <option value="Home">Home</option>
+                            <option value="Education">Education</option>
+                            <option value="Hobby">Hobby</option>
+                            <option value="Transportation">Transportation</option>
+                            <option value="Food">Food</option>
+                            <option value="Health">Health</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <input type="text" id="description" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input type="date" id="date">
+                    </div>
+                    <button type="submit" class="btn-primary">Add Expense</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Recent Expenses Section -->
+        <section class="expenses-section">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Recent Expenses</h2>
+                <button id="export-btn" class="btn-primary" style="padding: 0.5rem 1rem;">Export to CSV</button>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="start-date">Start Date</label>
+                    <input type="date" id="start-date">
+                </div>
+                <div class="form-group">
+                    <label for="end-date">End Date</label>
+                    <input type="date" id="end-date">
+                </div>
+                <button id="filter-btn" class="btn-primary" style="align-self: flex-end;">Filter</button>
+            </div>
+            <div class="expenses-table-container">
+                <table id="expenses-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Expenses will be loaded here via JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+</main>
+
+<script>
+    // Load data when page is ready
+    document.addEventListener('DOMContentLoaded', function() {
+        loadExpenses();
+        loadStats();
+    });
+</script>
+{% endblock %}

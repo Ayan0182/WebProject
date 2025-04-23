@@ -1,0 +1,430 @@
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4895ef;
+    --danger-color: #f72585;
+    --success-color: #4cc9f0;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+    --gray-color: #6c757d;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.header-content h1{
+    color: #8267d4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f5f7fa;
+    color: var(--dark-color);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Auth Styles */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4361ee, #3a0ca3);
+}
+
+.auth-card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    width: 100%;
+    max-width: 400px;
+}
+
+.auth-card h1 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+}
+
+.error-message {
+    color: var(--danger-color);
+    background-color: rgba(247, 37, 133, 0.1);
+    padding: 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--gray-color);
+}
+
+.auth-footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* Dashboard Styles */
+header {
+    background-color: white;
+    box-shadow: var(--box-shadow);
+    padding: 1rem 0;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logout-btn {
+    color: var(--danger-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.logout-btn:hover {
+    text-decoration: underline;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+@media (min-width: 992px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.summary-section {
+    grid-column: 1 / -1;
+}
+
+.summary-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .summary-cards {
+        grid-template-columns: 1fr 2fr;
+    }
+}
+
+.summary-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.summary-card.total {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.summary-card.total h3 {
+    color: var(--gray-color);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.summary-card.total p {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.chart-container {
+    height: 300px;
+}
+
+.add-expense-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.expenses-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    grid-column: 1 / -1;
+}
+
+.expenses-table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: #e9ecef;
+    color: var(--dark-color);
+}
+
+/* Category colors */
+.category-Home {
+    background-color: #ffec99;
+    color: #5f3dc4;
+}
+
+.category-Education {
+    background-color: #b2f2bb;
+    color: #2b8a3e;
+}
+
+.category-Hobby {
+    background-color: #ffc9c9;
+    color: #c92a2a;
+}
+
+.category-Transportation {
+    background-color: #a5d8ff;
+    color: #1864ab;
+}
+
+.category-Food {
+    background-color: #ffd8a8;
+    color: #e67700;
+}
+
+.category-Health {
+    background-color: #d0bfff;
+    color: #5f3dc4;
+}
+
+.category-Other {
+    background-color: #e9ecef;
+    color: #495057;
+}
+
+
+
+/* Edit/Delete Buttons */
+.edit-btn, .delete-btn {
+    padding: 0.25rem 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin: 0 0.1rem;
+}
+
+.edit-btn {
+    background-color: #a5d8ff;
+    color: #1864ab;
+}
+
+.delete-btn {
+    background-color: #ffc9c9;
+    color: #c92a2a;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    opacity: 0.8;
+}
+
+/* Filter Section */
+#filter-btn {
+    height: fit-content;
+    align-self: flex-end;
+}
+
+/* Responsive Tables */
+@media (max-width: 768px) {
+    .expenses-table-container {
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+    }
+}
+
+/* Chart Containers */
+.chart-container {
+    height: 300px;
+    margin-bottom: 1rem;
+}
+
+/* Add this to your existing CSS */
+td[data-currency="inr"]::before {
+    content: "₹";
+    margin-right: 2px;
+}
+
+
+
+
+
+/* Edit Mode Styling */
+[data-edit-mode="true"] {
+    border: 2px solid #4361ee;
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    background-color: #f0f7ff;
+    transition: all 0.3s ease;
+}
+
+[data-edit-mode="true"] h2 {
+    color: #4361ee;
+}
+
+/* Edit/Delete Buttons */
+.edit-btn, .delete-btn {
+    padding: 0.25rem 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    margin: 0 0.1rem;
+    transition: all 0.2s ease;
+}
+
+.edit-btn {
+    background-color: #a5d8ff;
+    color: #1864ab;
+}
+
+.delete-btn {
+    background-color: #ffc9c9;
+    color: #c92a2a;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    opacity: 0.8;
+    transform: translateY(-1px);
+}
+
+/* Form Transition Effects */
+.add-expense-section {
+    transition: all 0.3s ease;
+}
+
+/* Responsive Tables */
+@media (max-width: 768px) {
+    .expenses-table-container {
+        overflow-x: auto;
+        display: block;
+        white-space: nowrap;
+    }
+}
+
+/* Chart Containers */
+.chart-container {
+    height: 300px;
+    margin-bottom: 1rem;
+}
+
+/* Indian Rupee Symbol Styling */
+.rupee-symbol::before {
+    content: "₹";
+    margin-right: 2px;
+}
