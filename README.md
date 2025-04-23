@@ -1,2 +1,2 @@
-# WebProject
-Expense Tracker
+# Expense Tracker
+Web Project
